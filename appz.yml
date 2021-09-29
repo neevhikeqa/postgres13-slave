@@ -13,6 +13,7 @@ build:
 deploy:
     context: alpha/DEV
     type: statefulset
+    ingress: none
     replicas: 1
     port:
     - 5432
@@ -21,9 +22,11 @@ volumes:
   - claim: postgres-slave-data
     mount: /appz/data
     name: data
-    size: 10Gi
-    mode: ReadWriteOnce   
-    
+    size: 5Gi
+  - claim: postgres-slave-backup
+    mount: /appz/backup
+    name: backup
+    size: 5Gi  
     
 properties:
     POSTGRESQL_REPLICATION_MODE: slave
