@@ -11,9 +11,8 @@ build:
     image_template: postgres_slave-13.3
     
 deploy:
-    context: alpha/DEV
+    context:  neevhikeqa/DEV
     type: statefulset
-    ingress: none
     replicas: 1
     port:
     - 5432
